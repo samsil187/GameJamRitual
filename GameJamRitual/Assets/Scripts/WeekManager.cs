@@ -24,14 +24,12 @@ public class WeekManager : MonoBehaviour {
 
 	//Week difficulty arrays
 
-	public GameObject acceptButton1;
-	public GameObject acceptButton2;
-	public GameObject acceptButton3;
-	public GameObject acceptButton4;
-	public GameObject acceptButton5;
-	public GameObject acceptButton6;
-	public GameObject acceptButton7;
-	public GameObject acceptButton8;
+	public GameObject recipePanel_1;
+	public GameObject recipePanel_2;
+	public GameObject recipePanel_3;
+	public GameObject recipePanel_4;
+	public GameObject recipePanel_5;
+	public GameObject recipePanel_6;
 
 	public int currentRecipeNum;
 
@@ -43,7 +41,7 @@ public class WeekManager : MonoBehaviour {
 
 	public GameObject recipePanel;
 
-	public List<RecipePanel> panelList = new List<RecipePanel> ();
+	//public List<RecipePanel> panelList = new List<RecipePanel> ();
 	public List<Recipe> recipeList = new List<Recipe>();
 	private List<int> weekDifficultyList = new List<int>();
 
@@ -52,27 +50,27 @@ public class WeekManager : MonoBehaviour {
 		StartWeek ();
 		weekTimeCount = weekTotalTime;
 
-		acceptButton1 = GameObject.Find ("AcceptButton1");
-		acceptButton1.SetActive (false);
+		//acceptButton1 = GameObject.Find ("AcceptButton1");
+		//acceptButton1.SetActive (false);
 		isThereAnActiveRecipe = false;
 	}
 
 	void CreateNewPanel(Recipe r){
-		Transform location = GameObject.Find("PanelStartPosition").transform;
-		GameObject panel = (GameObject)Instantiate(recipePanel,new Vector3(location.position.x + 1, location.position.y),location.rotation);
+		//Transform location = GameObject.Find("PanelStartPosition").transform;
+		//GameObject panel = (GameObject)Instantiate(recipePanel,new Vector3(location.position.x, location.position.y),location.rotation);
 
 		//Text panelNameText = 
-		panel.transform.Find ("PanelName").GetComponent<Text> ().text = r.recipeName;
+		//panel.transform.Find ("PanelName").GetComponent<Text> ().text = r.recipeName;
 		//panelNameText.text= r.recipeName;
 		//RecipePanel rp = (RecipePanel) panel;
 
-		panelList.Add (panel);
+		//.Add (panel);
 	}
 
 	void DestroyPanel(int panelNumber){
-		RecipePanel rp = panelList [panelNumber];
-		Destroy(rp);
-		panelList.RemoveAt(panelNumber);
+		//RecipePanel rp = panelList [panelNumber];
+		//Destroy(rp);
+		//panelList.RemoveAt(panelNumber);
 	}
 
 	// Update is called once per frame
@@ -82,6 +80,7 @@ public class WeekManager : MonoBehaviour {
 
 		if (weekTimeCount <= 0) {
 			Debug.Log ("Week Over!");
+			//Show summary
 		}
 
 		//The delay before adding another recipe
@@ -89,8 +88,9 @@ public class WeekManager : MonoBehaviour {
 		if (delayCounter <= 0 && recipesAddedThisWeekCount < totalRecipesToAddThisWeek) {
 
 			//Get new value off weekDifficultyList
+
 			Recipe r = AddRecipeToWeek (4);
-			CreateNewPanel (r);
+			//CreateNewPanel (r);
 		}
 			
 
@@ -98,8 +98,6 @@ public class WeekManager : MonoBehaviour {
 		for (int i = 0; i < recipeList.Count; i++) {
 			recipeList[i].currentTimer -= Time.deltaTime;
 
-			//Reposition Panels
-	
 			//Timer ran out on a task
 			if (recipeList [i].currentTimer <= 0) {
 				recipeList [i].isFinished = true;
@@ -120,10 +118,16 @@ public class WeekManager : MonoBehaviour {
 				//After a set time Remove from List
 				if (recipeList [i].currentTimer <= -4) {
 					recipeList.RemoveAt(i); //WARNING: POSSIBLE ISSUES HERE
-					DestroyPanel(i);
+					//DestroyPanel(i);
 				}
 			}
+
+
+
 		}
+
+		//Display / Reposition Panels
+
 
 		if (isThereAnActiveRecipe) {
 			recipeText.text = "";
@@ -152,7 +156,7 @@ public class WeekManager : MonoBehaviour {
 			}
 
 			//THis needs logic
-			acceptButton1.SetActive (true);
+			//acceptButton1.SetActive (true);
 
 		}
 	}
