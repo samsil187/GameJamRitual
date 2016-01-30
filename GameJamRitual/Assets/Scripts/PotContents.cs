@@ -20,6 +20,6 @@ public class PotContents : MonoBehaviour {
 
 	public void AddToPot(Ingredient ingredient){
 		potIngredients.Add (ingredient);
-		potContents.text += ingredient.ingredientName;
+		potContents.text += ingredient.ingredientName + System.Environment.NewLine;
 	}
 }

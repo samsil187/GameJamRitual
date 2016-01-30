@@ -27,13 +27,10 @@ public class DragHandler : MonoBehaviour {
 		
 	public void OnMouseUp(){
 		Ingredient ingredient = GetComponent<Ingredient> ();
-		if (ingredient == null) {
-			Debug.Log ("NULL");
-		}
 
 		if (ingredient.isInPot == true) {
 			potContents.AddToPot (ingredient);
-			Debug.Log(GetComponent<Ingredient> ().ingredientName);
+			Debug.Log(GetComponent<Ingredient> ().ingredientName + System.Environment.NewLine);
 		}
 
 		transform.position = GetComponent<Ingredient> ().startPosition;

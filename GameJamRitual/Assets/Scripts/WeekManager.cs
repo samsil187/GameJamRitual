@@ -17,8 +17,8 @@ public class WeekManager : MonoBehaviour {
 
 	public Text recipeText;
 
+	public Recipe activeRecipe;
 
-	//private  recipeText;
 	private List<Recipe> recipeList = new List<Recipe>();
 
 	// Use this for initialization
@@ -43,14 +43,15 @@ public class WeekManager : MonoBehaviour {
 
 			//Gameloop timer (can be randomized)
 
+			activeRecipe = recipeList [0];
 
-			foreach (var recipe in recipeList) {						
-				foreach (var item in recipe.finalRecipeList) {
+			//foreach (var recipe in recipeList) {						
+				foreach (var item in activeRecipe.finalRecipeList) {
 					recipeText.text += item + System.Environment.NewLine;
 					//recipeText.text += item;
 
 				}
-			}
+			//}
 
 		}
 

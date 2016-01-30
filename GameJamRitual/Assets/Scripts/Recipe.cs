@@ -65,7 +65,7 @@ public class Recipe : MonoBehaviour {
 	void RandomlyGenerateIngredients(int numIngredientsNeeded, int numOfSpecialActions){
 		
 		for (int i = 0; i < numIngredientsNeeded; i++) {
-			int num = Random.Range (0, 2);
+			int num = Random.Range (0, 3);
 			finalRecipeList.Add (listOfIngredients[num]);
 		}
 	}
