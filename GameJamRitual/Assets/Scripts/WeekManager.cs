@@ -22,6 +22,8 @@ public class WeekManager : MonoBehaviour {
 	public int totalNumberOfRecipesWeek4;
 	public int totalNumberOfRecipesWeek5;
 
+	//Week difficulty arrays
+
 	public GameObject acceptButton1;
 	public GameObject acceptButton2;
 	public GameObject acceptButton3;
@@ -39,12 +41,14 @@ public class WeekManager : MonoBehaviour {
 	public int whichRecipeIsActive;
 	public Recipe activeRecipe;
 
+	public GameObject recipePanel;
+
+	public List<RecipePanel> panelList = new List<RecipePanel> ();
 	public List<Recipe> recipeList = new List<Recipe>();
 	private List<int> weekDifficultyList = new List<int>();
 
 	// Use this for initialization
 	void Start () {
-
 		StartWeek ();
 		weekTimeCount = weekTotalTime;
 
@@ -52,7 +56,25 @@ public class WeekManager : MonoBehaviour {
 		acceptButton1.SetActive (false);
 		isThereAnActiveRecipe = false;
 	}
-	
+
+	void CreateNewPanel(Recipe r){
+		Transform location = GameObject.Find("PanelStartPosition").transform;
+		GameObject panel = (GameObject)Instantiate(recipePanel,new Vector3(location.position.x + 1, location.position.y),location.rotation);
+
+		//Text panelNameText = 
+		panel.transform.Find ("PanelName").GetComponent<Text> ().text = r.recipeName;
+		//panelNameText.text= r.recipeName;
+		//RecipePanel rp = (RecipePanel) panel;
+
+		panelList.Add (panel);
+	}
+
+	void DestroyPanel(int panelNumber){
+		RecipePanel rp = panelList [panelNumber];
+		Destroy(rp);
+		panelList.RemoveAt(panelNumber);
+	}
+
 	// Update is called once per frame
 	void Update () {
 
@@ -67,12 +89,17 @@ public class WeekManager : MonoBehaviour {
 		if (delayCounter <= 0 && recipesAddedThisWeekCount < totalRecipesToAddThisWeek) {
 
 			//Get new value off weekDifficultyList
-			AddRecipeToWeek (4);
+			Recipe r = AddRecipeToWeek (4);
+			CreateNewPanel (r);
 		}
 			
+
+
 		for (int i = 0; i < recipeList.Count; i++) {
 			recipeList[i].currentTimer -= Time.deltaTime;
 
+			//Reposition Panels
+	
 			//Timer ran out on a task
 			if (recipeList [i].currentTimer <= 0) {
 				recipeList [i].isFinished = true;
@@ -93,6 +120,7 @@ public class WeekManager : MonoBehaviour {
 				//After a set time Remove from List
 				if (recipeList [i].currentTimer <= -4) {
 					recipeList.RemoveAt(i); //WARNING: POSSIBLE ISSUES HERE
+					DestroyPanel(i);
 				}
 			}
 		}
@@ -129,10 +157,12 @@ public class WeekManager : MonoBehaviour {
 		}
 	}
 
-	void AddRecipeToWeek(int difficulty){
-		recipeList.Add(new Recipe (difficulty));
+	Recipe AddRecipeToWeek(int difficulty){
+		Recipe r = new Recipe (difficulty);
+		recipeList.Add(r);
 		recipesAddedThisWeekCount += 1;
 		delayCounter = maxDelayToAddNext;
+		return r;
 	}
 
 	void StartWeek(){
