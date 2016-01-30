@@ -18,7 +18,6 @@ public class DragHandler : MonoBehaviour {
 
 	void OnMouseDrag()
 	{
-		Debug.Log (Random.Range (0, 10));
 		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
 		transform.position = curPosition;
