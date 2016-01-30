@@ -83,6 +83,7 @@
 'Assets/Scripts/Ingredient.cs'
 'Assets/Scripts/PotContents.cs'
 'Assets/Scripts/Recipe.cs'
+'Assets/Scripts/RecipePanel.cs'
 'Assets/Scripts/WeekManager.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'

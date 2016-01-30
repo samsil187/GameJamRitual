@@ -20,13 +20,11 @@ public class Ingredient : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
-		//Debug.Log ("Entered");
 		isInPot = true;	
 	}
 
 
 	void OnTriggerExit2D(Collider2D coll){
-		//Debug.Log ("Exitted");
 		isInPot = false;	
 	}
 }

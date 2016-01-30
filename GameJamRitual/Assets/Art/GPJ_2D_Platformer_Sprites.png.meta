@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f895b4137f23e4dc0953f4c60254adb7
-timeCreated: 1454118922
+timeCreated: 1454146481
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: icon_3
     21300008: icon_4
     21300010: Pot
+    21300012: button
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -118,6 +119,17 @@ TextureImporter:
         y: 81
         width: 16
         height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: button
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 84
+        width: 7
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

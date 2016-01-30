@@ -6,8 +6,8 @@ public class Recipe : MonoBehaviour {
 
 	public int difficulty; // easy - 4, medium - , hard - , extreme - 
 
-	public int timeLimit; 
-	public int currentTimer;
+	public float timeLimit; 
+	public float currentTimer;
 
 	public int reputationReward;
 	public int reputationPenalty;
@@ -21,6 +21,9 @@ public class Recipe : MonoBehaviour {
 
 	public string recipeName;
 	public string recipeDescription;
+
+	public bool isFinished;
+	public bool isSuccessful;
 
 	public List <string> listOfIngredients = new List<string>{	"Eye of Newt",
 		"Hair of Virgin",
@@ -44,15 +47,23 @@ public class Recipe : MonoBehaviour {
 
 		RandomlyGenerateIngredients (difficulty, 0);
 
+		//Get recipe Name
+		//Get recipe Description
 
+		recipeName = "Love potion";
+		recipeDescription = "I need this to help me find that special somebody";
+
+		//Set time limit and start the timer
+		timeLimit = 3;
+		currentTimer = timeLimit;
+
+		isFinished = false;
+		isSuccessful = false;
 	}
 
 	void Start () {
 		//RandomlyGenerateIngredients (7, 0);
 			
-//		foreach (var item in finalRecipeList) {
-//			Debug.Log (item);
-//		}
 	}
 	
 	// Update is called once per frame

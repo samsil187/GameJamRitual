@@ -31,10 +31,6 @@ public class DeliverVial : MonoBehaviour {
 
 		//bool match = true;
 
-//		foreach (var potItem in potContents.potIngredients) {
-//			weekManager.activeRecipe[0];
-//		}
-
 		if (potContents.potIngredients.Count != weekManager.activeRecipe.finalRecipeList.Count) {
 			Debug.Log ("WRONG SIZE!");
 			return false;

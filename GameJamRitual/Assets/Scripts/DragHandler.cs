@@ -7,12 +7,10 @@ public class DragHandler : MonoBehaviour {
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
-	//private Vector3 startPosition;
 	public PotContents potContents;
 
 	void OnMouseDown() {
-		
-		//startPosition =	gameObject.transform.position;
+
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 	}
 
