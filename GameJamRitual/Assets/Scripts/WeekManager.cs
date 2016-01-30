@@ -24,12 +24,12 @@ public class WeekManager : MonoBehaviour {
 
 	//Week difficulty arrays
 
-	public GameObject recipePanel_1;
-	public GameObject recipePanel_2;
-	public GameObject recipePanel_3;
-	public GameObject recipePanel_4;
-	public GameObject recipePanel_5;
-	public GameObject recipePanel_6;
+	public RecipePanel recipePanel_1;
+	public RecipePanel recipePanel_2;
+	public RecipePanel recipePanel_3;
+	public RecipePanel recipePanel_4;
+	public RecipePanel recipePanel_5;
+	public RecipePanel recipePanel_6;
 
 	public int currentRecipeNum;
 
@@ -90,7 +90,6 @@ public class WeekManager : MonoBehaviour {
 			//Get new value off weekDifficultyList
 
 			Recipe r = AddRecipeToWeek (4);
-			//CreateNewPanel (r);
 		}
 			
 
@@ -117,16 +116,23 @@ public class WeekManager : MonoBehaviour {
 				//Feedback that a task failed
 				//After a set time Remove from List
 				if (recipeList [i].currentTimer <= -4) {
-					recipeList.RemoveAt(i); //WARNING: POSSIBLE ISSUES HERE
+					recipeList.RemoveAt (i); //WARNING: POSSIBLE ISSUES HERE
 					//DestroyPanel(i);
 				}
-			}
 
+			} else {
+				//Display / Reposition Panels
+
+				if(i == 0){
+					recipePanel_1
+				}
+
+			}
 
 
 		}
 
-		//Display / Reposition Panels
+
 
 
 		if (isThereAnActiveRecipe) {
